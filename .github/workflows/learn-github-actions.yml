@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Set deploy_branch
         run: |
-          echo "branch_name={{GITHUB_REF3##*/}}" >> $GITHUB_ENV
+          echo "branch_name={{GITHUB_REF##*/}}" >> $GITHUB_ENV
           :
       - run: echo "${{env.branch_name}}"
     #-- Slack通知 --#
