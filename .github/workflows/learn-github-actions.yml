@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "branch_name={{GITHUB_REF3##*/}}" >> $GITHUB_ENV
           :
-      - run: echo "{{env.branch_name}}"
+      - run: echo "${{env.branch_name}}"
     #-- Slack通知 --#
       # 成功
       - name: Slack Notification on Success
