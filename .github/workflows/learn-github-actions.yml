@@ -15,9 +15,10 @@ jobs:
     steps:
       - name: Set deploy_branch
         run: |
-          echo "branch_name={{GITHUB_REF##*/}}" >> $GITHUB_ENV
-          :
-      - run: echo "${{env.branch_name}}"
+         echo "branch_name=${GITHUB_REF##*/}" >> $GITHUB_ENV
+            :
+      - run: echo "${{ env.branch_name }}"
+      - run: echo $GITHUB_REF 
     #-- Slack通知 --#
       # 成功
       - name: Slack Notification on Success
