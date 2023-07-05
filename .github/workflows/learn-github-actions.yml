@@ -4,7 +4,7 @@ on:
     branches:
       - main
 env:
-  SLACK_WEBHOOK: ${{secrets.github_actions_run}}
+  SLACK_WEBHOOK: ${{secrets.GIT_HUB_ACTIONS_RUN}}
   SLACK_USERNAME: DeployBot
   SLACK_CHANNEL: develop
   SLACK_ICON: https://example.com/image/icon_bot.png
