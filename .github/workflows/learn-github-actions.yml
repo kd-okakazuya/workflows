@@ -1,5 +1,13 @@
 name: learn-github-actions
-on: [push]
+on: 
+  push: 
+    branches:
+      - main
+env:
+  SLACK_WEBHOOK: ${{secrets.github_actions_run}}
+  SLACK_USERNAME: DeployBot
+  SLACK_CHANNEL: develop
+  SLACK_ICON: https://example.com/image/icon_bot.png
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
@@ -10,3 +18,19 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
+    #-- Slack通知 --#
+      # 成功
+      - name: Slack Notification on Success
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: Deploy Success
+          SLACK_COLOR: good
+
+      # 失敗
+      - name: Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: Deploy Failure
+          SLACK_COLOR: danger
