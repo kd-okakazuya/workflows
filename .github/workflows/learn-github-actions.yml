@@ -3,7 +3,10 @@ on:
   push: 
     branches:
       - main
+      - feature
+    
 env:
+  BRANCHENAME: env.branch_name
   SLACK_WEBHOOK: ${{secrets.GIT_HUB_ACTIONS_RUN}}
   SLACK_USERNAME: DeployBot
   SLACK_CHANNEL: お試し用
@@ -18,6 +21,7 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
+      - run: echo "BRANCHENAME"
     #-- Slack通知 --#
       # 成功
       - name: Slack Notification on Success
