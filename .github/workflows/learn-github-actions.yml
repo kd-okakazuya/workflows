@@ -28,7 +28,7 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v3
         with:
-          repository: gixo-jp/asahi-pos
+          repository: kd-okakazuya/workflows
           ref: ${{ env.branch_name }} 
     #-- Slack通知 --#
       # 成功
