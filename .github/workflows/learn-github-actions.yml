@@ -1,9 +1,21 @@
 name: learn-github-actions
-on: 
-  push: 
-    branches:
-      - main
-      - feature
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        type: choice
+        description: deploy target
+        options: 
+        - dev
+        - stg
+        - pro
+        - comparison
+      plan_deploy:
+        type: choice
+        description: plan or deploy
+        options: 
+        - plan
+        - deploy
 env:
   SLACK_WEBHOOK: ${{secrets.GIT_HUB_ACTIONS_RUN}}
   SLACK_USERNAME: DeployBot
